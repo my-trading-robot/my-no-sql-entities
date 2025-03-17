@@ -2,7 +2,7 @@ use serde::*;
 
 service_sdk::macros::use_my_no_sql_entity!();
 
-#[my_no_sql_entity("asset-pair")]
+#[my_no_sql_entity("instruments")]
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct InstrumentMyNoSqlEntity {
     pub accuracy: u32,
