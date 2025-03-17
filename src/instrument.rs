@@ -9,9 +9,7 @@ pub struct InstrumentMyNoSqlEntity {
 }
 
 impl InstrumentMyNoSqlEntity {
-    pub fn generate_partition_key() -> &'static str {
-        "i"
-    }
+    pub const PARTITION_KEY: &'static str = "i";
 
     pub fn generate_row_key(instr_id: &str) -> &str {
         instr_id
