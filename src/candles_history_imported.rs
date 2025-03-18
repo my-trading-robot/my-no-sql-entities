@@ -5,7 +5,7 @@ service_sdk::macros::use_my_no_sql_entity!();
 #[my_no_sql_entity("candles-history-imported")]
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct CandlesHistoryImportedMyNoSqlEntity {
-    pub max_candle_dt: String,
+    pub max_candle_dt: i64,
 }
 
 impl CandlesHistoryImportedMyNoSqlEntity {
