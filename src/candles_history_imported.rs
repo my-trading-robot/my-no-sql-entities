@@ -4,7 +4,9 @@ service_sdk::macros::use_my_no_sql_entity!();
 
 #[my_no_sql_entity("candles-history-imported")]
 #[derive(Serialize, Deserialize, Debug, Clone)]
-pub struct CandlesHistoryImportedMyNoSqlEntity {}
+pub struct CandlesHistoryImportedMyNoSqlEntity {
+    pub max_candle_dt: String,
+}
 
 impl CandlesHistoryImportedMyNoSqlEntity {
     pub const PARTITION_KEY: &'static str = "i";
