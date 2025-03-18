@@ -6,6 +6,7 @@ service_sdk::macros::use_my_no_sql_entity!();
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct InstrumentMyNoSqlEntity {
     pub accuracy: u32,
+    pub polygon_instr_id: Option<String>,
 }
 
 impl InstrumentMyNoSqlEntity {
