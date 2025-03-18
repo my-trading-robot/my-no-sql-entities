@@ -11,7 +11,7 @@ pub struct InstrumentMyNoSqlEntity {
 impl InstrumentMyNoSqlEntity {
     pub const PARTITION_KEY: &'static str = "i";
 
-    pub fn generate_row_key(instr_id: &str) -> &str {
-        instr_id
+    pub fn get_instrument_id(&self) -> &str {
+        &self.row_key
     }
 }
