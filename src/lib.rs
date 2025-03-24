@@ -4,3 +4,7 @@ mod instrument;
 pub use instrument::*;
 mod bid_ask;
 pub use bid_ask::*;
+mod atr_settings_entity;
+pub use atr_settings_entity::*;
+mod atr_value_entity;
+pub use atr_value_entity::*;
