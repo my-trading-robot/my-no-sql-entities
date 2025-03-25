@@ -10,3 +10,5 @@ mod atr_value_entity;
 pub use atr_value_entity::*;
 mod price_level_entity;
 pub use price_level_entity::*;
+mod atr_bounds_entity;
+pub use atr_bounds_entity::*;
