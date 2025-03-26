@@ -7,7 +7,7 @@ service_sdk::macros::use_my_no_sql_entity!();
 pub struct AtrSettingsEntity {
     pub duration_days: u64,
     pub percent: f64,
-    pub period: i32,
+    pub candles_count: i32,
 }
 
 impl AtrSettingsEntity {
