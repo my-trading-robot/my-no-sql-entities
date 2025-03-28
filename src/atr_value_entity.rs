@@ -11,11 +11,11 @@ pub struct AtrValueMyNoSqlEntity {
 }
 
 impl AtrValueMyNoSqlEntity {
-    pub const MONTH_CANDLE_TYPE: &'static str = "1m";
-    pub const FIVE_MIN_CANDLES_TYPE: &'static str = "5m";
-    pub const HOUR_CANDLES_TYPE: &'static str = "1h";
-    pub const DAY_CANDLES_TYPE: &'static str = "1d";
-    pub const MONTH_CANDLES_TYPE: &'static str = "1M";
+    pub const MIN_CANDLE_TYPE: &'static str = "1m";
+    pub const MIN_5_CANDLE_TYPE: &'static str = "5m";
+    pub const HOUR_CANDLE_TYPE: &'static str = "1h";
+    pub const DAY_CANDLE_TYPE: &'static str = "1d";
+    pub const MONTH_CANDLE_TYPE: &'static str = "1M";
 
     pub fn get_instrument(&self) -> &str {
         &self.partition_key
