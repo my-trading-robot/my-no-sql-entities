@@ -14,5 +14,4 @@ mod atr_bounds_entity;
 pub use atr_bounds_entity::*;
 mod near_level_instrument_entity;
 pub use near_level_instrument_entity::*;
-mod consts;
-pub use consts::*;
+pub mod consts;
