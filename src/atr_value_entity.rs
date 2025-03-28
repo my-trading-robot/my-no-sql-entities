@@ -22,6 +22,6 @@ impl AtrValueMyNoSqlEntity {
     }
 
     pub fn get_candle_type(&self) -> &str {
-        &self.partition_key
+        &self.row_key
     }
 }
