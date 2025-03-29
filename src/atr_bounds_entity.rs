@@ -10,7 +10,7 @@ pub struct AtrBoundsEntity {
     pub ignore_height_above: f64,
     pub ignore_height_below: f64,
     pub first_candle_date: String,
-    pub last_candle_date_to: String,
+    pub last_candle_date: String,
     pub candles_count: usize,
     pub heights_count: usize,
     pub upper_height_index: usize,
