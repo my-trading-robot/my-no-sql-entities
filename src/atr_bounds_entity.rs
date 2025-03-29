@@ -9,4 +9,9 @@ service_sdk::macros::use_my_no_sql_entity!();
 pub struct AtrBoundsEntity {
     pub ignore_height_above: f64,
     pub ignore_height_below: f64,
+    pub candles_count: usize,
+    pub upper_index: usize,
+    pub lower_index: usize,
+    pub date_from: String,
+    pub date_to: String,
 }
