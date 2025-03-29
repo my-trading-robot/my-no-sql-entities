@@ -8,6 +8,7 @@ pub struct AtrSettingsEntity {
     pub duration_days: u64,
     pub percent: f64,
     pub candles_count: i32,
+    pub candles_limit: Option<usize>,
 }
 
 impl AtrSettingsEntity {
