@@ -6,7 +6,7 @@ service_sdk::macros::use_my_no_sql_entity!();
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct NearLevelInstrumentMyNoSqlEntity {
     pub atr_value: f64,
-    pub bid_ask_price: f64,
+    pub bid_ask: f64,
 }
 
 impl NearLevelInstrumentMyNoSqlEntity {
