@@ -20,15 +20,14 @@ impl NearLevelInstrumentMyNoSqlEntity {
 
     pub fn get_atr(&self) -> f64 {
         let splits = self.row_key.split(":").collect::<Vec<&str>>();
-        let str = splits[0];
 
-        str.parse().unwrap()
+        splits[0].parse().unwrap()
     }
 
     pub fn get_level_type(&self) -> &str {
         let splits = self.row_key.split(":").collect::<Vec<&str>>();
 
-        splits[2]
+        splits[1]
     }
 
     pub fn get_level_price(&self) -> f64 {
