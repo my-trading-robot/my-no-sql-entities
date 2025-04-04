@@ -16,6 +16,10 @@ impl PriceLevelMyNoSqlEntity {
             time_stamp: Default::default(),
         }
     }
+
+    pub fn get_instrument_id(&self) -> &str {
+        &self.partition_key
+    }
     pub fn get_type(&self) -> &str {
         let index = self.row_key.find(":").unwrap();
         &self.row_key[..index]
