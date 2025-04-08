@@ -17,3 +17,5 @@ pub use near_level_instrument_entity::*;
 pub mod consts;
 mod candles_with_similar_extremes_entity;
 pub use candles_with_similar_extremes_entity::*;
+mod trend_entity;
+pub use trend_entity::*;
