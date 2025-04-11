@@ -19,3 +19,5 @@ mod candles_with_similar_extremes_entity;
 pub use candles_with_similar_extremes_entity::*;
 mod trend_entity;
 pub use trend_entity::*;
+mod trend_settings;
+pub use trend_settings::*;
