@@ -6,8 +6,9 @@ service_sdk::macros::use_my_no_sql_entity!();
 #[my_no_sql_entity("trend-settings")]
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct TrendSettingsMyNoSqlEntity {
+    // 0.0 ... 1.0 Where 1 is 100% 
     pub min_confirmation_ratio: f64,
-    pub candles_count: f64,
+    pub candles_count: usize,
 }
 
 impl TrendSettingsMyNoSqlEntity {
