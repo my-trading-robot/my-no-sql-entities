@@ -6,7 +6,9 @@ service_sdk::macros::use_my_no_sql_entity!();
 /// RowKey - CandlePatternType
 #[my_no_sql_entity("candle-patterns")]
 #[derive(Serialize, Deserialize, Debug, Clone)]
-pub struct CandlePatternMyNoSqlEntity {}
+pub struct CandlePatternMyNoSqlEntity {
+    pub direction: String,
+}
 
 impl CandlePatternMyNoSqlEntity {
     pub fn get_instrument_id(&self) -> &str {
