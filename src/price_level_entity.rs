@@ -9,6 +9,10 @@ service_sdk::macros::use_my_no_sql_entity!();
 pub struct PriceLevelMyNoSqlEntity {}
 
 impl PriceLevelMyNoSqlEntity {
+    pub const ROW_KEY_GLOBAL: &'static str = "g"; //Global level
+    pub const ROW_KEY_HIGH: &'static str = "ath"; // ATH (auto updates)
+    pub const ROW_KEY_LOW: &'static str = "atl"; // ATL (auto updates)
+
     pub fn new(instrument_id: String, tp: &str, price: f64) -> Self {
         Self {
             partition_key: instrument_id,
