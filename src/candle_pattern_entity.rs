@@ -64,6 +64,10 @@ impl TryFrom<&str> for CandlePatternTypeMyNoSqlEntity {
             return Ok(Self::CloseRetest);
         }
 
+        if value == Self::LongRetest.to_string() {
+            return Ok(Self::LongRetest);
+        }
+
         if value == Self::PressureBuildup.to_string() {
             return Ok(Self::PressureBuildup);
         }
