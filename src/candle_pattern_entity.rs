@@ -1,5 +1,6 @@
 use serde::{Deserialize, Serialize};
 use service_sdk::my_no_sql_sdk::macros::my_no_sql_entity;
+use std::fmt::Display;
 service_sdk::macros::use_my_no_sql_entity!();
 
 /// Partition - InstrumentId
@@ -11,12 +12,24 @@ pub struct CandlePatternMyNoSqlEntity {
 }
 
 impl CandlePatternMyNoSqlEntity {
+    pub fn generate_rk(candle_type: &str, pattern_type: CandlePatternTypeMyNoSqlEntity) -> String {
+        format!("{candle_type}:{}", pattern_type.to_string())
+    }
+
     pub fn get_instrument_id(&self) -> &str {
         &self.partition_key
     }
 
     pub fn get_pattern_type_str(&self) -> &str {
-        &self.row_key
+        let splits = self.row_key.split(":").collect::<Vec<&str>>();
+
+        splits[1]
+    }
+
+    pub fn get_candle_type_str(&self) -> &str {
+        let splits = self.row_key.split(":").collect::<Vec<&str>>();
+
+        splits[0]
     }
 }
 
@@ -29,27 +42,39 @@ pub enum CandlePatternTypeMyNoSqlEntity {
     SmallBarApproach,
 }
 
+impl Display for CandlePatternTypeMyNoSqlEntity {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            CandlePatternTypeMyNoSqlEntity::Retest => write!(f, "Retest"),
+            CandlePatternTypeMyNoSqlEntity::PressureBuildup => write!(f, "PressureBuildup"),
+            CandlePatternTypeMyNoSqlEntity::AtrSpike => write!(f, "AtrSpike"),
+            CandlePatternTypeMyNoSqlEntity::Hammer => write!(f, "Hammer"),
+            CandlePatternTypeMyNoSqlEntity::SmallBarApproach => write!(f, "SmallBarApproach"),
+        }
+    }
+}
+
 impl TryFrom<&str> for CandlePatternTypeMyNoSqlEntity {
     type Error = String;
 
     fn try_from(value: &str) -> Result<Self, Self::Error> {
-        if value == format!("{:?}", Self::Retest) {
+        if value == Self::Retest.to_string() {
             return Ok(Self::Retest);
         }
 
-        if value == format!("{:?}", Self::PressureBuildup) {
+        if value == Self::PressureBuildup.to_string() {
             return Ok(Self::PressureBuildup);
         }
 
-        if value == format!("{:?}", Self::AtrSpike) {
+        if value == Self::AtrSpike.to_string() {
             return Ok(Self::AtrSpike);
         }
 
-        if value == format!("{:?}", Self::Hammer) {
+        if value == Self::Hammer.to_string() {
             return Ok(Self::Hammer);
         }
 
-        if value == format!("{:?}", Self::SmallBarApproach) {
+        if value == Self::SmallBarApproach.to_string() {
             return Ok(Self::SmallBarApproach);
         }
 
