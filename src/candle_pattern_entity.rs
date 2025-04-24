@@ -35,7 +35,8 @@ impl CandlePatternMyNoSqlEntity {
 
 #[derive(Debug, Clone)]
 pub enum CandlePatternTypeMyNoSqlEntity {
-    Retest,
+    CloseRetest,
+    LongRetest,
     PressureBuildup,
     AtrSpike,
     Hammer,
@@ -45,7 +46,8 @@ pub enum CandlePatternTypeMyNoSqlEntity {
 impl Display for CandlePatternTypeMyNoSqlEntity {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
-            CandlePatternTypeMyNoSqlEntity::Retest => write!(f, "Retest"),
+            CandlePatternTypeMyNoSqlEntity::CloseRetest => write!(f, "CloseRetest"),
+            CandlePatternTypeMyNoSqlEntity::LongRetest => write!(f, "LongRetest"),
             CandlePatternTypeMyNoSqlEntity::PressureBuildup => write!(f, "PressureBuildup"),
             CandlePatternTypeMyNoSqlEntity::AtrSpike => write!(f, "AtrSpike"),
             CandlePatternTypeMyNoSqlEntity::Hammer => write!(f, "Hammer"),
@@ -58,8 +60,8 @@ impl TryFrom<&str> for CandlePatternTypeMyNoSqlEntity {
     type Error = String;
 
     fn try_from(value: &str) -> Result<Self, Self::Error> {
-        if value == Self::Retest.to_string() {
-            return Ok(Self::Retest);
+        if value == Self::CloseRetest.to_string() {
+            return Ok(Self::CloseRetest);
         }
 
         if value == Self::PressureBuildup.to_string() {
