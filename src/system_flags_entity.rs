@@ -9,7 +9,7 @@ service_sdk::macros::use_my_no_sql_entity!();
 //RowKey = InstrumentId
 //value = NotUsed
 
-#[my_no_sql_entity("price-levels")]
+#[my_no_sql_entity("system-flags")]
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct SystemFlagsMyNoSqlEntity {
     #[serde(skip_serializing_if = "Option::is_none")]
