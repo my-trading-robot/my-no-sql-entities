@@ -29,3 +29,6 @@ pub use limit_trader::*;
 
 mod system_flags_entity;
 pub use system_flags_entity::*;
+
+mod limit_trader_settings;
+pub use limit_trader_settings::*;
