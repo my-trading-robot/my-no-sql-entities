@@ -9,6 +9,7 @@ service_sdk::macros::use_my_no_sql_entity!();
 pub struct LimitTraderNoSqlEntity {
     pub level: f64,               
     pub side: LimitTraderSideMyNoSql, 
+    pub date_time: u64, 
 }
 
 impl LimitTraderNoSqlEntity {
