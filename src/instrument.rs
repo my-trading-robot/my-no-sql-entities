@@ -8,6 +8,7 @@ pub struct InstrumentMyNoSqlEntity {
     pub accuracy: u32,
     pub polygon_instr_id: Option<String>,
     pub binance_id: Option<String>,
+    pub initialized: Option<bool>,
 }
 
 impl InstrumentMyNoSqlEntity {
