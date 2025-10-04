@@ -18,4 +18,5 @@ pub struct SystemFlagsMyNoSqlEntity {
 
 impl SystemFlagsMyNoSqlEntity {
     pub const CRYPTO_CANDLE_IS_IMPORTED: &'static str = "cci";
+    pub const LAST_MONTHLY_SYNC: &'static str = "lms";
 }
