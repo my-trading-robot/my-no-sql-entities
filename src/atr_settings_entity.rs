@@ -5,7 +5,6 @@ service_sdk::macros::use_my_no_sql_entity!();
 #[my_no_sql_entity("atr-settings")]
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct AtrSettingsEntity {
-    pub percent: f64,
     pub candles_count: i32,
 }
 
@@ -20,7 +19,6 @@ impl Default for AtrSettingsEntity {
             partition_key: Self::PARTITION_KEY.to_string(),
             row_key: Self::ROW_KEY.to_string(),
             time_stamp: Default::default(),
-            percent: 0.8,
             candles_count: 365,
         }
     }
