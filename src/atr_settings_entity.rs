@@ -12,11 +12,20 @@ pub struct AtrSettingsEntity {
 }
 
 impl AtrSettingsEntity {
-    pub fn get_rk() -> &'static str {
-        "*"
-    }
+    pub const PARTITION_KEY: &'static str = "*";
+    pub const ROW_KEY: &'static str = "*";
+}
 
-    pub fn get_pk() -> &'static str {
-        "*"
+impl Default for AtrSettingsEntity {
+    fn default() -> Self {
+        Self {
+            partition_key: Self::PARTITION_KEY.to_string(),
+            row_key: Self::ROW_KEY.to_string(),
+            time_stamp: Default::default(),
+            duration_days: 365,
+            percent: 0.8,
+            candles_count: 5,
+            candles_limit: None,
+        }
     }
 }
