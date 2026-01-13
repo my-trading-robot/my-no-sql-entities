@@ -9,4 +9,7 @@ service-sdk = { tag = "0.4.2", git = "https://github.com/MyJetTools/service-sdk.
     "my-nosql-sdk",
 ] }
 
+
+trading-robot-common = { tag = "0.1.0", git = "https://github.com/my-trading-robot/trading-robot-common.git" }
+
 serde = { version = "*", features = ["derive"] }
