@@ -2,7 +2,7 @@ use serde::*;
 
 service_sdk::macros::use_my_no_sql_entity!();
 
-#[derive(Debug, Clone, Copy)]
+#[derive(Debug, Clone, Copy, Eq, PartialEq)]
 pub enum LevelType {
     Global,
     Ath,
