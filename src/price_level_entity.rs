@@ -2,6 +2,31 @@ use serde::*;
 
 service_sdk::macros::use_my_no_sql_entity!();
 
+#[derive(Debug, Clone, Copy)]
+pub enum LevelType {
+    Global,
+    Ath,
+    Atl,
+}
+
+impl LevelType {
+    pub fn from_prefix(prefix: &str) -> Self {
+        match prefix {
+            PriceLevelMyNoSqlEntity::ROW_KEY_PREFIX_ATH => Self::Ath,
+            PriceLevelMyNoSqlEntity::ROW_KEY_PREFIX_ATL => Self::Atl,
+            _ => Self::Global,
+        }
+    }
+
+    pub fn as_str(&self) -> &'static str {
+        match self {
+            LevelType::Global => PriceLevelMyNoSqlEntity::ROW_KEY_PREFIX_GLOBAL,
+            LevelType::Ath => PriceLevelMyNoSqlEntity::ROW_KEY_PREFIX_ATH,
+            LevelType::Atl => PriceLevelMyNoSqlEntity::ROW_KEY_PREFIX_ATL,
+        }
+    }
+}
+
 //Partition - Instrument_id
 //RowKey - g: global, 1m: minute, 1h: hour etc. Consts are in ws_contracts library
 #[my_no_sql_entity("price-levels")]
@@ -9,14 +34,14 @@ service_sdk::macros::use_my_no_sql_entity!();
 pub struct PriceLevelMyNoSqlEntity {}
 
 impl PriceLevelMyNoSqlEntity {
-    pub const ROW_KEY_GLOBAL: &'static str = "g"; //Global level
-    pub const ROW_KEY_ATH: &'static str = "ath"; // ATH (auto updates)
-    pub const ROW_KEY_ATL: &'static str = "atl"; // ATL (auto updates)
+    pub const ROW_KEY_PREFIX_GLOBAL: &'static str = "g"; //Global level
+    pub const ROW_KEY_PREFIX_ATH: &'static str = "ath"; // ATH (auto updates)
+    pub const ROW_KEY_PREFIX_ATL: &'static str = "atl"; // ATL (auto updates)
 
-    pub fn new(instrument_id: String, tp: &str, price: f64) -> Self {
+    pub fn new(instrument_id: String, level_type: LevelType, price: f64) -> Self {
         Self {
             partition_key: instrument_id,
-            row_key: format!("{}:{}", tp, price),
+            row_key: format!("{}:{}", level_type.as_str(), price),
             time_stamp: Default::default(),
         }
     }
@@ -24,9 +49,10 @@ impl PriceLevelMyNoSqlEntity {
     pub fn get_instrument_id(&self) -> &str {
         &self.partition_key
     }
-    pub fn get_type(&self) -> &str {
+    pub fn get_type(&self) -> LevelType {
         let index = self.row_key.find(":").unwrap();
-        &self.row_key[..index]
+        let prefix = &self.row_key[..index];
+        LevelType::from_prefix(prefix)
     }
 
     pub fn get_price(&self) -> f64 {
