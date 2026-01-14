@@ -49,6 +49,12 @@ impl PriceLevelMyNoSqlEntity {
     pub fn get_instrument_id(&self) -> &str {
         &self.partition_key
     }
+
+    pub fn try_get_type(&self) -> Option<LevelType> {
+        let index = self.row_key.find(":")?;
+        let prefix = &self.row_key[..index];
+        Some(LevelType::from_prefix(prefix))
+    }
     pub fn get_type(&self) -> LevelType {
         let index = self.row_key.find(":").unwrap();
         let prefix = &self.row_key[..index];
